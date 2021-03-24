@@ -17,6 +17,8 @@ DWORD WINAPI DllEntry(LPVOID lpArgument)
 	PlayerList playerList = PlayerHandler::populatePlayerList();
 	playerList.maxAllPlayerStats();
 	playerList.localPlayer->initiateSuperSpeed();
+	playerList.localPlayer->initiateInfiniteAmmo();
+	playerList.localPlayer->initiateGodMode();
 	while (true)
 		ZombieHandler::oneShotZombies();
 	return 0;
