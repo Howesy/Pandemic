@@ -1,6 +1,7 @@
 #include <Components/Player.hpp>
 #include <Memory.hpp>
 #include <Windows.h>
+#include <cmath>
 
 Player::Player(uintptr_t player)
 {
@@ -34,10 +35,10 @@ void Player::setDowns(int32_t value)
 
 void Player::maxOutStats()
 {
-	int32_t maximumStatValue = INT32_MAX - 1;
-	this->setPoints(maximumStatValue);
-	this->setKills(maximumStatValue);
-	this->setHeadshots(maximumStatValue);
+	int32_t highStatValue = INT32_MAX - pow(10, 5);
+	this->setPoints(highStatValue);
+	this->setKills(highStatValue);
+	this->setHeadshots(highStatValue);
 	this->setDowns(0);
 }
 //I need to test this function.
