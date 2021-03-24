@@ -64,7 +64,12 @@ void Player::initiateInfiniteAmmo()
 
 void Player::initiateNoclip()
 {
+	PlayerHandler::noclip = !PlayerHandler::noclip;
 
+	if (PlayerHandler::noclip)
+		Memory::write(PlayerOffsets::playerNoclip, 1);
+	else
+		Memory::write(PlayerOffsets::playerNoclip, 0);
 }
 
 void Player::initiateSuperSpeed()
