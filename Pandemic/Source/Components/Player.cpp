@@ -35,7 +35,7 @@ void Player::setDowns(int32_t value)
 
 void Player::maxOutStats()
 {
-	int32_t highStatValue = INT32_MAX - pow(10, 5);
+	int32_t highStatValue = INT32_MAX - static_cast<int32_t>(pow(10, 5));
 	this->setPoints(highStatValue);
 	this->setKills(highStatValue);
 	this->setHeadshots(highStatValue);
@@ -99,7 +99,7 @@ PlayerList PlayerHandler::populatePlayerList()
 	{
 		Player* player = reinterpret_cast<Player*>(PlayerOffsets::fetchPlayer(i));
 		if (player != nullptr)
-			placeholderVector.push_back(reinterpret_cast<Player*>(PlayerOffsets::fetchPlayer(i)));
+			placeholderVector.push_back(player);
 	}
 	placeholderStruct.localPlayer = placeholderVector.at(0);
 	placeholderStruct.players = placeholderVector;
