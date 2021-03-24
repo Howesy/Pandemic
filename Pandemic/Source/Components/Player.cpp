@@ -96,7 +96,11 @@ PlayerList PlayerHandler::populatePlayerList()
 	PlayerList placeholderStruct;
 	std::vector<Player*> placeholderVector;
 	for (auto i = 0; i < 3; i++)
-		placeholderVector.push_back(reinterpret_cast<Player*>(PlayerOffsets::fetchPlayer(i)));
+	{
+		Player* player = reinterpret_cast<Player*>(PlayerOffsets::fetchPlayer(i));
+		if (player != nullptr)
+			placeholderVector.push_back(reinterpret_cast<Player*>(PlayerOffsets::fetchPlayer(i)));
+	}
 	placeholderStruct.localPlayer = placeholderVector.at(0);
 	placeholderStruct.players = placeholderVector;
 	return placeholderStruct;
